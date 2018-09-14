@@ -7,28 +7,30 @@ def createFeatureVector(fileName=None):
     fileFeatureVector = [0] * 128
 
     for letter in fileBody:
-        fileFeatureVector[ord(letter)] = fileFeatureVector[ord(letter)] + 1
-        print letter
+        fileFeatureVector[ord(letter)] += 1
+        #print letter
 
     i = 0
     for num in fileFeatureVector:
         print(chr(i) + " - " + str(num))
         #print(str(i) + " - " + str(num))
-        i = i + 1
-    #print fileBody
+        i += 1
+
     return fileFeatureVector
 
 
 def normalize(numVectorIn=None):
     sum = 0
     numVector = numVectorIn
+
     for num in numVector:
-        sum = sum + (num**2)
+        sum += (num**2)
     magnitude = math.sqrt(sum)
+
     i = 0
     for num in numVector:
         numVector[i] = num / magnitude
-        i = i + 1
+        i += 1
 
     return numVector
 
@@ -36,3 +38,6 @@ def normalize(numVectorIn=None):
 
 
 createFeatureVector(ourFileName)
+normalizedVector = normalize(createFeatureVector(ourFileName))
+for num in normalizedVector:
+    print num
