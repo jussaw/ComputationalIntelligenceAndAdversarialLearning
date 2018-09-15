@@ -1,14 +1,17 @@
+import os
 import FeatureExtractor
 import FileUtil
 
-ourFileName = "../Articles/1000_1.txt"
-featureVector = FeatureExtractor.createFeatureVector(ourFileName)
-normalizedVector = FeatureExtractor.normalize(featureVector)
+#Run web Crawler
 
-i = 32
-for num in normalizedVector:
-    print (str(i) + " - " + str(num))
-    i += 1
-    FileUtil.writeFile(normalizedVector, "test")
+#Find article names in folder
+fileNames = FileUtil.getFileNames()
 
-#frequencyVector = termFrequency(featureVector)
+#Delete output file
+if os.path.isfile("../Feature Vectors/output.txt"):
+    os.remove("../Feature Vectors/output.txt")
+
+for file in fileNames:
+    fileArg = "../Articles/" + file
+    fVector = FeatureExtractor.createFeatureVector(fileArg)
+    FileUtil.writeFile(fVector, "output", file)
