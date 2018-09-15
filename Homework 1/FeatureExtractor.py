@@ -16,20 +16,27 @@ def createFeatureVector(fileName=None):
     # Check what each character is in the string then increment
     # that index in fileFeatureVector
     for letter in fileBody:
-        fileFeatureVector[ord(letter)] += 1
+        if ord(letter) < 128 and ord(letter) >= 0:
+            fileFeatureVector[ord(letter)] += 1
         #print letter
 
-    # Runs through each item in the fileFeatureVector and print how many
-    # of each character was recorded
-    i = 0
-    for num in fileFeatureVector:
-        print(chr(i) + " - " + str(num))
-        #print(str(i) + " - " + str(num))
-        i += 1
 
     # Close the file then return the fileFeatureVector
     file.close()
-    return fileFeatureVector
+
+    condensedFileFeatureVector = []
+    for i in range(32,128):
+        condensedFileFeatureVector.append(fileFeatureVector[i])
+
+    # Runs through each item in the fileFeatureVector and print how many
+    # of each character was recorded
+    i = 32
+    for num in condensedFileFeatureVector:
+        print(str(i) + " - " + chr(i) + " - " + str(num))
+        #print(str(i) + " - " + str(num))
+        i += 1
+
+    return condensedFileFeatureVector
 
 # Takes an input of a vector then returns the normalized version of that vector
 def normalize(numVectorIn=None):
@@ -42,9 +49,9 @@ def normalize(numVectorIn=None):
 
     i = 0
     for num in numVector:
-        numVector[i] = num / magnitude
+        numVector[i] /= magnitude
         i += 1
-
+    print ("Magnitude = " + str(magnitude))
     return numVector
 
 def termFrequency(numVectorIn=None):
@@ -67,7 +74,9 @@ ourFileName = "../Articles/1000_1.txt"
 featureVector = createFeatureVector(ourFileName)
 normalizedVector = normalize(featureVector)
 
+i = 32
 for num in normalizedVector:
-    print num
+    print (str(i) + " - " + str(num))
+    i += 1
 
 #frequencyVector = termFrequency(featureVector)
