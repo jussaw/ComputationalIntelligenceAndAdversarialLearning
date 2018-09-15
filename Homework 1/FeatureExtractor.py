@@ -53,30 +53,3 @@ def normalize(numVectorIn=None):
         i += 1
     print ("Magnitude = " + str(magnitude))
     return numVector
-
-def termFrequency(numVectorIn=None):
-    numVector = numVectorIn
-    sum = 0
-    for num in numVector:
-        sum += num
-
-    i = 0
-    for num in numVector:
-        frequency = num / sum
-        numVector[i] = frequency
-        print (chr(i) + " - " + str(frequency))
-        i += 1
-
-    return numVector;
-
-
-ourFileName = "../Articles/1000_1.txt"
-featureVector = createFeatureVector(ourFileName)
-normalizedVector = normalize(featureVector)
-
-i = 32
-for num in normalizedVector:
-    print (str(i) + " - " + str(num))
-    i += 1
-
-#frequencyVector = termFrequency(featureVector)
