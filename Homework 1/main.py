@@ -1,7 +1,5 @@
 import FeatureExtractor
 
-
-
 ourFileName = "../Articles/1000_1.txt"
 featureVector = FeatureExtractor.createFeatureVector(ourFileName)
 normalizedVector = FeatureExtractor.normalize(featureVector)
