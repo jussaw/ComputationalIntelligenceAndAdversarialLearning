@@ -40,6 +40,7 @@ def createFeatureVector(fileName=None):
 
 # Takes an input of a vector then returns the normalized version of that vector
 def normalize(numVectorIn=None):
+    # Create sum variable and numVector which is equal to the input parameter
     sum = 0
     numVector = numVectorIn
 

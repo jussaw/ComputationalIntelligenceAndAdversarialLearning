@@ -15,3 +15,6 @@ for file in fileNames:
     fileArg = "../Articles/" + file
     fVector = FeatureExtractor.createFeatureVector(fileArg)
     FileUtil.writeFile(fVector, "output", file)
+
+    fNormalizedVector = FeatureExtractor.normalize(fVector)
+    FileUtil.writeFile(fNormalizedVector, "outputNormalized", file)
