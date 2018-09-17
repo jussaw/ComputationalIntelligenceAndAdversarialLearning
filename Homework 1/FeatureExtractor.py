@@ -48,6 +48,5 @@ def normalize(numVectorIn=None):
     for num in numVector:
         numVector[i] /= magnitude
         i += 1
-    print ("Magnitude = " + str(magnitude))
 
     return numVector
