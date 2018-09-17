@@ -18,7 +18,6 @@ def createFeatureVector(fileName=None):
     for letter in fileBody:
         if ord(letter) < 127 and ord(letter) >= 0:
             fileFeatureVector[ord(letter)] += 1
-        #print letter
 
     # Close the file then return the fileFeatureVector
     file.close()
@@ -27,14 +26,6 @@ def createFeatureVector(fileName=None):
     condensedFileFeatureVector = []
     for i in range(32,128):
         condensedFileFeatureVector.append(fileFeatureVector[i])
-
-    # Runs through each item in the fileFeatureVector and print how many
-    # of each character was recorded
-    i = 32
-    for num in condensedFileFeatureVector:
-        print(str(i) + " - " + chr(i) + " - " + str(num))
-        #print(str(i) + " - " + str(num))
-        i += 1
 
     return condensedFileFeatureVector
 
