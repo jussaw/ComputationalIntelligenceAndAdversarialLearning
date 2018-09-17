@@ -7,9 +7,11 @@ import FileUtil
 #Find article names in folder
 fileNames = FileUtil.getFileNames()
 
-#Delete output file
+#Delete output files
 if os.path.isfile("../Feature Vectors/output.txt"):
     os.remove("../Feature Vectors/output.txt")
+if os.path.isfile("../Feature Vectors/outputNormalized.txt"):
+    os.remove("../Feature Vectors/outputNormalized.txt")
 
 # Create a feature vector and normalized feature vector for each
 # file then write both vectors to their corresponding files.
