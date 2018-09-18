@@ -1,4 +1,3 @@
-
 # Takes in an input of a feature vector
 # Determines the number of senteces by calculating the total number
 # of exclamation points, periods, and question marks.
@@ -6,11 +5,8 @@
 def calculateAmountOfSentences(featureVector=None):
     total = 0
     total += featureVector[33-32]
-    print ("num of ! = " + str(featureVector[33-32]))
     total += featureVector[46-32]
-    print ("num of . = " + str(featureVector[46-32]))
     total += featureVector[63-32]
-    print ("num of ? = " + str(featureVector[63-32]))
 
     return total
 
@@ -38,7 +34,7 @@ def calculateAmountOfWords(featureVector=None):
 # Determines the average by dividing the the total by the number
 # of feature vectors.
 # Returns that average
-def calculateAverage(total, numOfFeatureVectors):
+def calculateAverage(total=None, numOfFeatureVectors=None):
     average = total / numOfFeatureVectors
 
     return average
