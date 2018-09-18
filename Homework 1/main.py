@@ -6,8 +6,10 @@ import CalculateStatistics
 # Run web Crawler
 
 # Find article names in folder
-fileNames = FileUtil.getFileNames()
-fileNames.sort()
+articlesDirectory = "../ArticlesExamples/"
+fileNames = FileUtil.getFileNames(articlesDirectory)
+#fileNames.sort()
+print ("number of files = " + str(len(fileNames)))
 
 # Delete output files
 if os.path.isfile("../Feature Vectors/output.txt"):
@@ -26,7 +28,7 @@ totalSentences = 0
 for file in fileNames:
     # fileArg is set to directory of each files
     # fVector is feature vector of each file then it is written to file
-    fileArg = "../Articles/" + file
+    fileArg = articlesDirectory + file
     fVector = FeatureExtractor.createFeatureVector(fileArg)
     FileUtil.writeFile(fVector, "output", file)
 
