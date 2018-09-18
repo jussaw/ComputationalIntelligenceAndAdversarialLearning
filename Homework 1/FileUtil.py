@@ -4,7 +4,7 @@ from os import listdir
 
 def getFileNames(directory=None):
     fileNames = []
-    onlyfiles = [file for file in listdir(directory) if isfile(join("../Articles/", file))]
+    onlyfiles = [file for file in listdir(directory) if isfile(join(directory, file))]
     for f in onlyfiles:
         fileNames.append(f)
     return fileNames
