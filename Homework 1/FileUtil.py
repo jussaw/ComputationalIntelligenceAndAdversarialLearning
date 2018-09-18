@@ -6,8 +6,7 @@ from os import listdir
 def getFileNames(directory=None):
     #Create empty list of file names
     fileNames = []
-    #Grab only the files from the articles directory
-    onlyfiles = [file for file in listdir(directory) if isfile(join("../Articles/", file))]
+    onlyfiles = [file for file in listdir(directory) if isfile(join(directory, file))]
     for f in onlyfiles:
         #Add the files to the file names list.
         fileNames.append(f)
