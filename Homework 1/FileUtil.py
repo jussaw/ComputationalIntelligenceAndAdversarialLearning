@@ -2,9 +2,9 @@ import os.path
 from os.path import isfile, join
 from os import listdir
 
-def getFileNames():
+def getFileNames(directory=None):
     fileNames = []
-    onlyfiles = [file for file in listdir("../Articles/") if isfile(join("../Articles/", file))]
+    onlyfiles = [file for file in listdir(directory) if isfile(join("../Articles/", file))]
     for f in onlyfiles:
         fileNames.append(f)
     return fileNames
