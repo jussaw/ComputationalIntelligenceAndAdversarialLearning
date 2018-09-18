@@ -11,7 +11,7 @@ def createFeatureVector(fileName=None):
     # Create a int array with 128 0's to keep track of the count of each number
     file = open(fileName, "r")
     fileBody = file.read()#.lower()
-    fileFeatureVector = [0] * 128
+    fileFeatureVector = [0.0] * 128
 
     # Check what each character is in the string then increment
     # that index in fileFeatureVector
