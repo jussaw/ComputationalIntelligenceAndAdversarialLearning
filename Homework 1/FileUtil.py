@@ -11,7 +11,6 @@ def getFileNames():
 
 def writeFile(numVector=None, fileName=None, title=None):
     writePath = "../Feature Vectors/"
-
     titleWithoutExtension = title[:-4]
 
     completeName = os.path.join(writePath, fileName+".txt")
