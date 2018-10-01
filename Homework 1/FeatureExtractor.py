@@ -18,7 +18,6 @@ def createFeatureVector(fileName=None):
     for letter in fileBody:
         if ord(letter) < 127 and ord(letter) >= 0:
             fileFeatureVector[ord(letter)] += 1
-        #print letter
 
     # Close the file then return the fileFeatureVector
     file.close()
@@ -28,14 +27,6 @@ def createFeatureVector(fileName=None):
     for i in range(32,128):
         condensedFileFeatureVector.append(fileFeatureVector[i])
 
-    # Runs through each item in the fileFeatureVector and print how many
-    # of each character was recorded
-    i = 32
-    for num in condensedFileFeatureVector:
-        print(str(i) + " - " + chr(i) + " - " + str(num))
-        #print(str(i) + " - " + str(num))
-        i += 1
-
     return condensedFileFeatureVector
 
 # Takes an input of a vector then returns the normalized version of that vector
@@ -43,6 +34,8 @@ def normalize(numVectorIn=None):
     # Create sum variable to keep up with the total sum of the values
     # and numVector which is equal to the input parameter
     sum = 0
+
+
     numVector = numVectorIn
 
     # Run through each value in numVector and add the square of each value to sum
@@ -57,6 +50,5 @@ def normalize(numVectorIn=None):
     for num in numVector:
         numVector[i] /= magnitude
         i += 1
-    print ("Magnitude = " + str(magnitude))
 
     return numVector

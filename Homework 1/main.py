@@ -2,7 +2,6 @@ import os
 import FeatureExtractor
 import FileUtil
 
-#Run web Crawler
 
 #Find article names in folder
 fileNames = FileUtil.getFileNames()
@@ -19,8 +18,10 @@ for file in fileNames:
     fileArg = "../Articles/" + file
     fVector = FeatureExtractor.createFeatureVector(fileArg)
     FileUtil.writeFile(fVector, "output", file)
+    print "Wrote to ../FeatureVectors/output.txt"
 
     # fNormalizedVector is noramlized version of fileFeatureVector
     # Then we write it to the normalized feature vector file
     fNormalizedVector = FeatureExtractor.normalize(fVector)
     FileUtil.writeFile(fNormalizedVector, "outputNormalized", file)
+    print "Wrote to ../FeatureVectors/outputNormalized.txt"
