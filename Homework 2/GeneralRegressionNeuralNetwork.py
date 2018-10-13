@@ -1,5 +1,13 @@
+#Notes
+# What is tq_0, t_q, and t_i?  I will try to figure this out later..
+
 hfs = []
 t = []
+dq_0 = []
+sigma = 4.796
+
+def read_feature_vectors_from_file:
+    #Read feature vectors from file and append to t
 
 def compute_outputs(t_q, t, sigma):
   for i in range(0, len(t)):
