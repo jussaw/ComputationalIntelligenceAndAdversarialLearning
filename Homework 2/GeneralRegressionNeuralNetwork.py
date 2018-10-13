@@ -1,10 +1,10 @@
 #Notes
 # What is tq_0, t_q, and t_i?  I will try to figure this out later..
 
-hfs = []
-t = []
+hfs = [] #list for kernel outputs
+t = [] #list for feature vectors
 dq_0 = []
-sigma = 4.796
+sigma = 4.796 #d_max
 
 def read_feature_vectors_from_file:
     #Read feature vectors from file and append to t
