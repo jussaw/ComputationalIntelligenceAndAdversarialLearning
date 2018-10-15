@@ -34,6 +34,8 @@ def normalize(numVectorIn=None):
     # Create sum variable to keep up with the total sum of the values
     # and numVector which is equal to the input parameter
     sum = 0
+
+
     numVector = numVectorIn
 
     # Run through each value in numVector and add the square of each value to sum
