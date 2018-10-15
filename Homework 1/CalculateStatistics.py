@@ -38,3 +38,11 @@ def calculateAverage(total=None, numOfFeatureVectors=None):
     average = total / numOfFeatureVectors
 
     return average
+
+
+def printTotals(featureVectorIn=None, fileName=None):
+    print("File name: " + fileName)
+    print("Char count: " + str(calculateAmountOfChars(featureVectorIn)))
+    print("Word count: " + str(calculateAmountOfWords(featureVectorIn)))
+    print("Sentence count: " + str(calculateAmountOfSentences(featureVectorIn)))
+    print("\n")
