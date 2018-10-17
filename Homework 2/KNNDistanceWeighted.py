@@ -14,16 +14,22 @@ def KNN_Weighted_Distance(k=int, query=[], trainingData=[[]]):
         weight = calculateWeight(query, closestKData[i])
         weights.append(weight)
 
-    # Calculates the numerator (summation of the distance * weight)
-    for i in range(k):
-        distanceWeightSum += weight[i] * eucDistance(query, trainingData[i])
-
+    # Calculates the numerator (summation of (distance[i] * weight[i]))
     # Calculates the denominator (summation of the weights)
     for i in range(k):
-        weightSum += weight[i]
+        distanceWeightSum += weights[i] * eucDistance(query, closestKData[i])
+        weightSum += weights[i]
 
     # Calculates and returns output
     output = distanceWeightSum/weightSum
+    return output
+
+def KNN_Weighted_Distance2(k=int, query=[], trainingData=[[]]):
+    closestData = determineClosesData(k, query, trainingData)
+
+    for data in closestData:
+        pass
+
     return output
 
 # Returns the Euclidean Distance between the two vectors
@@ -37,13 +43,15 @@ def eucDistance(q=[], t_i=[]):
 # Calculates the weight according to the KNN Distance Weighted
 # specifications.
 def calculateWeight(q=[], t_i=[]):
+    if (eucDistance(q, t_i) == 0):
+        return 0
     weight = eucDistance(q, t_i)**(-1)
     return weight
 
 # Returns the k closest data
 def determineClosestData(k=int, query=[], trainingData=[[]]):
     sortedData = sortDistances(query, trainingData)
-    closesData = sortedData[0:k]
+    closestData = sortedData[0:k]
 
     return closestData
 
@@ -53,16 +61,19 @@ def sortDistances(query=[], trainingDataIn=[[]]):
     sortedData = []
 
     while len(trainingData) > 0:
-        #shortestDistanceData = trainingData[0]
         indexRemove = 0
 
+        # This starts from 1 because the first element is the name of article
         for i in range(1, len(trainingData)):
             if eucDistance(query, trainingData[i]) < eucDistance(query, trainingData[indexRemove]):
-                #shortestDistanceData = trainingData[i]
                 indexRemove = i
 
-        #sortedData.append(shortestDistanceData)
         sortedData.append(trainingData[indexRemove])
         del trainingData[indexRemove]
 
     return sortedData
+
+def parseAuthor(featureVector=[]):
+    featureInfo = featureVector[0]
+    authorName = featureInfo.split('_')[1]
+    return authorName
