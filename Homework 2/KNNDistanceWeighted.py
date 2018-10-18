@@ -1,36 +1,34 @@
-
+import sys
 
 def KNN_Weighted_Distance(k=int, query=[], trainingData=[[]]):
-    # Get k closest data sorted by distances
-    closestKData = determineClosestData(k, query, trainingData)
+    # Calculate neighborhood
+    closestData = determineClosestData(k, query, trainingData)
 
-    # Instantiate sum variables to 0
-    weightSum = 0
-    distanceWeightSum = 0
+    # Instantiate authordict. Keys are the authors, and
+    authorDict = {}
+    authorDictCount = {} # Remove later
 
-    # Calculate weights
-    weights = []
-    for i in range(k):
-        weight = calculateWeight(query, closestKData[i])
-        weights.append(weight)
-
-    # Calculates the numerator (summation of (distance[i] * weight[i]))
-    # Calculates the denominator (summation of the weights)
-    for i in range(k):
-        distanceWeightSum += weights[i] * eucDistance(query, closestKData[i])
-        weightSum += weights[i]
-
-    # Calculates and returns output
-    output = distanceWeightSum/weightSum
-    return output
-
-def KNN_Weighted_Distance2(k=int, query=[], trainingData=[[]]):
-    closestData = determineClosesData(k, query, trainingData)
-
+    # Finds the total weight for each author and stores them in authorDict
     for data in closestData:
-        pass
+        authorOfData = parseAuthor(data)
+        weightOfData = calculateWeight(query, data)
+        if authorOfData not in authorDict:
+            authorDict[authorOfData] = 0
+            authorDictCount[authorOfData] = 0  # Remove later
+        authorDict[authorOfData] += weightOfData
+        authorDictCount[authorOfData] += 1  # Remove later
 
-    return output
+    # Determines the author by choosing the one with the highest weight
+    bestAuthor = ""
+    bestWeight = 0
+    for author in authorDict:
+        print(str(author) + " : " + str(authorDict[author]))
+        print(str(author) + " : " + str(authorDictCount[author])) # Remove later
+        if authorDict[author] > bestWeight:
+            bestWeight = authorDict[author]
+            bestAuthor = author
+
+    return bestAuthor
 
 # Returns the Euclidean Distance between the two vectors
 def eucDistance(q=[], t_i=[]):
@@ -44,7 +42,7 @@ def eucDistance(q=[], t_i=[]):
 # specifications.
 def calculateWeight(q=[], t_i=[]):
     if (eucDistance(q, t_i) == 0):
-        return 0
+        return sys.maxsize
     weight = eucDistance(q, t_i)**(-1)
     return weight
 
@@ -77,3 +75,27 @@ def parseAuthor(featureVector=[]):
     featureInfo = featureVector[0]
     authorName = featureInfo.split('_')[1]
     return authorName
+
+def KNN_Weighted_Distance_Old(k=int, query=[], trainingData=[[]]):
+    # Get k closest data sorted by distances
+    closestKData = determineClosestData(k, query, trainingData)
+
+    # Instantiate sum variables to 0
+    weightSum = 0
+    distanceWeightSum = 0
+
+    # Calculate weights
+    weights = []
+    for i in range(k):
+        weight = calculateWeight(query, closestKData[i])
+        weights.append(weight)
+
+    # Calculates the numerator (summation of (distance[i] * weight[i]))
+    # Calculates the denominator (summation of the weights)
+    for i in range(k):
+        distanceWeightSum += weights[i] * eucDistance(query, closestKData[i])
+        weightSum += weights[i]
+
+    # Calculates and returns output
+    output = distanceWeightSum/weightSum
+    return output
