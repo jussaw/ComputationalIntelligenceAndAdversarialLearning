@@ -3,8 +3,12 @@ import FeatureExtractor
 import FileUtil
 import CalculateStatistics
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> a7bc274adca8f0963c1f68e1fd779094fa22ebf4
 # Find article names in folder
-articlesDirectory = "../ArticlesEx/"
+articlesDirectory = "../Articles/"
 fileNames = FileUtil.getFileNames(articlesDirectory)
 fileNames.sort()
 print ("\nNumber of files = " + str(len(fileNames)) + "\n")
@@ -44,6 +48,10 @@ for file in fileNames:
     # Then we write it to the normalized feature vector file
     fNormalizedVector = FeatureExtractor.normalize(fVector)
     FileUtil.writeFile(fNormalizedVector, "outputNormalized", file)
+<<<<<<< HEAD
+=======
+
+>>>>>>> a7bc274adca8f0963c1f68e1fd779094fa22ebf4
 
 
 # Calculates the average number of chars, words, and sentences.
@@ -57,6 +65,7 @@ print("Average amount of chararacters = " + str(averageChars))
 print("Average amount of words = " + str(averageWords))
 print("Average amount of sentences = " + str(averageSentences))
 <<<<<<< HEAD
+<<<<<<< HEAD
 print "Wrote to ../FeatureVectors/outputNormalized.txt"
 =======
 <<<<<<< HEAD
@@ -67,3 +76,8 @@ print("")
 >>>>>>> 02d54e926cd60aef82836b0b09948d266203167f
 >>>>>>> f915941d8decb875a3dcc15c1423ddde260d28ef
 >>>>>>> 19511e3ccdb2deebb1fa57d102ba38c796af4039
+=======
+
+
+print "Wrote to ../FeatureVectors/outputNormalized.txt"
+>>>>>>> a7bc274adca8f0963c1f68e1fd779094fa22ebf4
