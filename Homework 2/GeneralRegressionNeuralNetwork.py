@@ -7,8 +7,29 @@ import math
 # How do you obtan the desired output vectors?
 ##############################################
 
-sigma = 90 #d_max
+sigma = 3.5 #d_max
 numOfFeatureVectors = 0
+
+def getAverageVector(author):
+    x = []
+
+    articlesDirectory = "../Articles/"
+    fileNames = FileUtil.getFileNames(articlesDirectory)
+
+    for file in fileNames:
+        if (author in file):
+            fileArg = articlesDirectory + file
+            fVector = FeatureExtractor.createFeatureVector(fileArg)
+            fVectorNormalized = FeatureExtractor.normalize(fVector)
+            x.append(fVectorNormalized)
+
+    sumElement = 0
+    avgVector = []
+    for i in range(len(x[0])):
+        for j in range(len(x)):
+            sumElement += x[j][i]
+        avgVector.append(sumElement/len(x[0]))
+    return avgVector
 
 # Compute the final outputs for the General Refression Neural Networks for some
 # query tq_i.
@@ -27,7 +48,6 @@ def compute_outputs(t, tq_i, hfs, d, numSpots, dq_i): #Denoted as dq
     for j in range(0, len(t)):
         result += hfs[i] * d[i][j] #First summation Unit
     dq_i.append(result)
-
 
   sum_hfs = 0.0
 
@@ -51,7 +71,8 @@ def append_vectors_to_t(t):
         # fVector is feature vector of each file then it is written to file
         fileArg = articlesDirectory + file
         fVector = FeatureExtractor.createFeatureVector(fileArg)
-        t.append(fVector) #Append feature vectors to t.
+        fVectorNormalized = FeatureExtractor.normalize(fVector)
+        t.append(fVectorNormalized) #Append feature vectors to t.
 
 # Create a vector initialized with "numSpots" 0s.
 def create_empty_vectors(numSpots):
