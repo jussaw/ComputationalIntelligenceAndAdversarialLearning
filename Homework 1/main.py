@@ -3,13 +3,9 @@ import FeatureExtractor
 import FileUtil
 import CalculateStatistics
 
-<<<<<<< HEAD
-# Run web Crawler
-=======
->>>>>>> 02d54e926cd60aef82836b0b09948d266203167f
 
 # Find article names in folder
-articlesDirectory = "../ArticlesEx/"
+articlesDirectory = "../Articles/"
 fileNames = FileUtil.getFileNames(articlesDirectory)
 fileNames.sort()
 print ("\nNumber of files = " + str(len(fileNames)) + "\n")
@@ -49,7 +45,7 @@ for file in fileNames:
     # Then we write it to the normalized feature vector file
     fNormalizedVector = FeatureExtractor.normalize(fVector)
     FileUtil.writeFile(fNormalizedVector, "outputNormalized", file)
-<<<<<<< HEAD
+
 
 
 # Calculates the average number of chars, words, and sentences.
@@ -62,10 +58,6 @@ averageSentences = CalculateStatistics.calculateAverage(totalSentences, numOfFea
 print("Average amount of chararacters = " + str(averageChars))
 print("Average amount of words = " + str(averageWords))
 print("Average amount of sentences = " + str(averageSentences))
-<<<<<<< HEAD
-print("")
-=======
-=======
-    print "Wrote to ../FeatureVectors/outputNormalized.txt"
->>>>>>> 02d54e926cd60aef82836b0b09948d266203167f
->>>>>>> f915941d8decb875a3dcc15c1423ddde260d28ef
+
+
+print "Wrote to ../FeatureVectors/outputNormalized.txt"
