@@ -1,4 +1,5 @@
 import sys
+import math
 
 def KNN_Weighted_Distance(k=int, queryIn=[], trainingDataIn=[[]]):
     trainingData = trainingDataIn
@@ -42,6 +43,19 @@ def calculateWeight(q=[], t_i=[]):
         return sys.maxsize
     weight = eucDistance(q, t_i)**(-1)
     return weight
+
+def manDistance(q=[], t_i=[]):
+    sum = 0
+    for i in range(1, len(q)):
+        sum += abs(q[i] - t_i[i])
+    return sum
+
+def calculateWeightMan(q=[], t_i=[]):
+    if manDistance(q, t_i) == 0:
+        return sys.maxsize
+    weight = manDistance(q, t_i)**(-1)
+    return sum
+
 
 # Returns the k closest data
 def determineClosestData(k=int, query=[], trainingData=[[]]):
