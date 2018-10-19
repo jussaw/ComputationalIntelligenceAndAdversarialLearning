@@ -20,7 +20,7 @@ def getAverageVector(author):
         if (author in file):
             fileArg = articlesDirectory + file
             fVector = FeatureExtractor.createFeatureVector(fileArg)
-            #fVectorNormalized = FeatureExtractor.normalize(fVector)
+            fVectorNormalized = FeatureExtractor.normalize(fVector)
             x.append(fVector)
 
     sumElement = 0
@@ -57,6 +57,7 @@ def compute_outputs(t, tq_i, hfs, d, numSpots, dq_i): #Denoted as dq
   for j in range(0, len(t)):
     dq_i[j] = dq_i[j] / sum_hfs
 
+  print dq_i
 # Reads a list of file names, opens the files, and creates the appropriate
 # feature vectors.
 def append_vectors_to_t(t):

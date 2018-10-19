@@ -38,14 +38,14 @@ for i in range(len(t)):
     num = len(t)
     highest = 0
 
-GeneralRegressionNeuralNetwork.compute_outputs(t, guess, hfs, d, num, dq_i)
+    GeneralRegressionNeuralNetwork.compute_outputs(t, guess, hfs, d, num, dq_i)
 
-for j in range(len(dq_i)):
-    if (dq_i[j] > highest):
-        highest = dq_i[j]
-        spot = j
+    for j in range(len(dq_i)):
+       if (dq_i[j] > highest):
+           highest = dq_i[j]
+           spot = j
 
-if (spot == i):
-    runs.append(1)
+    if (spot == i):
+       runs.append(1)
 
 computeAverageAccuracy(runs)
