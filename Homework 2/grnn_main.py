@@ -9,7 +9,7 @@ def computeAverageAccuracy(runs):
             count = count + 1
 
     accuracy = (count / len(runs)) * 100
-    print "Accuracy: " + str(accuracy)
+    print "The Average Accuracy is: " + str(accuracy)
 
 t = []
 
@@ -18,16 +18,18 @@ moody = GeneralRegressionNeuralNetwork.getAverageVector('Moody')
 mcnair = GeneralRegressionNeuralNetwork.getAverageVector('Mcnair')
 black = GeneralRegressionNeuralNetwork.getAverageVector('Black')
 potter = GeneralRegressionNeuralNetwork.getAverageVector('Potter')
-#zenor = GeneralRegressionNeuralNetwork.getAverageVector('Zenor')
+zenor = GeneralRegressionNeuralNetwork.getAverageVector('Zenor')
 
 t.append(zenitz)
 t.append(moody)
 t.append(mcnair)
 t.append(black)
 t.append(potter)
-#t.append(zenor)
+t.append(zenor)
 
 for i in range(len(t)):
+    run = i + 1
+    print "Performing run number " + str(run) + " with query of element: " + str(run)
     runs = []
     hfs = []
     d = []

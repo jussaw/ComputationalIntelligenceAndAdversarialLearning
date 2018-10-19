@@ -20,8 +20,8 @@ def getAverageVector(author):
         if (author in file):
             fileArg = articlesDirectory + file
             fVector = FeatureExtractor.createFeatureVector(fileArg)
-            fVectorNormalized = FeatureExtractor.normalize(fVector)
-            x.append(fVectorNormalized)
+            #fVectorNormalized = FeatureExtractor.normalize(fVector)
+            x.append(fVector)
 
     sumElement = 0
     avgVector = []
