@@ -53,7 +53,7 @@ def manDistance(q=[], t_i=[]):
 def calculateWeightMan(q=[], t_i=[]):
     if manDistance(q, t_i) == 0:
         return sys.maxsize
-    weight = manDistance(q, t_i)**(-1)
+    weight = manDistance(q, t_i)**(-10)
     return sum
 
 

@@ -6,8 +6,8 @@ vecs = createFeatureVectors("../Feature Vectors/output.txt")
 totalVecs = len(vecs)
 k = 1
 for j in range(totalVecs):
-    totalCorrect = 0
-    totalRuns = 0
+    totalCorrect = 0.0
+    totalRuns = 0.0
     for i in range(totalVecs):
         vec = vecs[i]
         del vecs[i]
@@ -19,7 +19,6 @@ for j in range(totalVecs):
             totalCorrect += 1
         vecs = createFeatureVectors("../Feature Vectors/output.txt")
         totalRuns += 1
-
     percentageCorrect = totalCorrect / totalRuns
     print("Percentage Correct when k is " + str(k) +
         " on non-normalized set = " + str(percentageCorrect * 100) + "%")
@@ -31,8 +30,8 @@ totalVecs = len(vecsNorm)
 k = 1
 
 for j in range(totalVecs):
-    totalCorrect = 0
-    totalRuns = 0
+    totalCorrect = 0.0
+    totalRuns = 0.0
     for i in range(totalVecs):
         vec = vecsNorm[i]
         del vecsNorm[i]

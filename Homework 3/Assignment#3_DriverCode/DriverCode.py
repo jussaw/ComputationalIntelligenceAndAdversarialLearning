@@ -7,10 +7,22 @@ from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.model_selection import StratifiedKFold
 from sklearn import preprocessing
 import numpy as np
+from numpy import array
 from sklearn.model_selection import cross_val_score
 
+import FileUtil
+import ElitistGeneticAlgorithm
 
+# Y is labels
+# X is data
 CU_X, Y = Data_Utils.Get_Casis_CUDataset()
+dataSet = FileUtil.createFeatureVectors("../../Feature Vectors/output.txt")
+# CU_X, Y = ElitistGeneticAlgorithm.separateLabels(dataSet)
+# CU_X = array(CU_X)
+# Y = array(Y)
+#
+# print len(CU_X)
+# print len(Y)
 
 
 rbfsvm = svm.SVC()
@@ -28,7 +40,7 @@ for train, test in skf.split(CU_X, Y):
     #train split
     CU_train_data = CU_X[train]
     train_labels = Y[train]
-    
+
     #test split
     CU_eval_data = CU_X[test]
     eval_labels = Y[test]
@@ -37,7 +49,7 @@ for train, test in skf.split(CU_X, Y):
     tfidf.fit(CU_train_data)
     CU_train_data = dense.transform(tfidf.transform(CU_train_data))
     CU_eval_data = dense.transform(tfidf.transform(CU_eval_data))
-    
+
     # standardization
     scaler.fit(CU_train_data)
     CU_train_data = scaler.transform(CU_train_data)
