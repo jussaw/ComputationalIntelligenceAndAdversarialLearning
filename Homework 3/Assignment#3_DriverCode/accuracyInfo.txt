@@ -1,0 +1,11 @@
+Best k value is: 53
+Best accuracy is: 0.8312160000000004
+Highest k value is: 5
+Highest accuracy is: 0.9168000000000002
+
+
+
+
+K = 40
+Average of all highest accuracies is: 0.7634659200000009
+Highest of all highest accuracies is: 0.8816000000000003
