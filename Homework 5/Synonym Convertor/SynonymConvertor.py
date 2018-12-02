@@ -52,7 +52,6 @@ def makeTokensArray(lines):
     return tokensArray
 
 def removeNonAscii(s):
-    # return "".join(i for i in s if type(i) == 'str' and ord(i)<128)
     output = ""
     for i in s:
         if isinstance(i, str) and ord(i) < 128:
