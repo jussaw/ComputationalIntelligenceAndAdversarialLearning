@@ -37,9 +37,7 @@ def main():
             lineArr = line.split()
             lineArr[indexToReplace] = getBestSynonym(lineArr[indexToReplace])
             line = " ".join(lineArr)
-            outputLines.append(line)
-        else:
-            outputLines.append(line)
+        outputLines.append(line)
 
     tokensArray = makeTokensArray(outputLines)
 
